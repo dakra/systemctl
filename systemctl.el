@@ -90,16 +90,19 @@
                   (shell-quote-argument unit)))
          "active\n"))
 
+;;;###autoload
 (defun systemctl-start (unit)
   "Start UNIT when not already started."
   (unless (systemctl-is-active-p unit)
     (systemctl-command "start" unit)))
 
+;;;###autoload
 (defun systemctl-stop (unit)
   "Stop UNIT when not already stopped."
   (when (systemctl-is-active-p unit)
     (systemctl-command "stop" unit)))
 
+;;;###autoload
 (defun systemctl-toggle (unit)
   "Start or stop a systemctl UNIT."
   (if (systemctl-is-active-p unit)
